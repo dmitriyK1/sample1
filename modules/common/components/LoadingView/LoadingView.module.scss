@@ -1,0 +1,53 @@
+@import '../../../../styles/animations';
+
+$color-primary: #005fec;
+$circle_diameter: 25px;
+$circle_stroke_width: 3px;
+
+.container {
+  position: relative;
+  height: 100%;
+  min-height: 65px;
+}
+
+.centeredContainer {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.visible,
+.hidden {
+  composes: container;
+}
+
+.visible {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.1s, visibility 0s;
+}
+
+.hidden {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.1s, visibility 0.1s;
+}
+
+.circle {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: $circle_diameter;
+  height: $circle_diameter;
+  margin-left: calc(#{-$circle_diameter} / 2);
+  margin-top: calc(#{-$circle_diameter} / 2);
+  border-radius: 50%;
+  border: $circle_stroke_width $color-primary solid;
+  border-top-color: transparent;
+  animation-name: spin-clockwise;
+  animation-timing-function: cubic-bezier(0.785, 0.135, 0.15, 0.86);
+  animation-iteration-count: infinite;
+  animation-duration: 0.75s;
+}
